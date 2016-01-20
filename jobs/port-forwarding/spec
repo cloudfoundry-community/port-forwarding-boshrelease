@@ -1,0 +1,13 @@
+---
+name: port-forwarding
+packages: []
+templates:
+  bin/monit_debugger: bin/monit_debugger
+  bin/port_forwarding_ctl: bin/port_forwarding_ctl
+  config/port_forwarding.conf.erb: config/port_forwarding.conf
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+properties:
+  port_forwarding.leader_address:
+    description: Hostname/IP to the leader/master of the cluster
