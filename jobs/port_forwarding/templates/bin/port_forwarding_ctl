@@ -8,16 +8,18 @@ case $1 in
   start)
       echo -n "Applying iptables rules for port forwarding"
       /var/vcap/jobs/port_forwarding/bin/forward_ports.sh
-    ;;
+
+      mkdir -p /var/vcap/sys/run/port_forwarding
+      echo $$ > /var/vcap/sys/run/port_forwarding/port_forwarding.pid;
+      exec 2>&1 sleep 86400
+      ;;
 
   stop)
       echo -n "Removing iptables rules for port forwarding"
       /var/vcap/jobs/port_forwarding/bin/unforward_ports.sh
-    ;;
-  *)
-    echo "Usage: port_forwarding_ctl {start|stop}"
-
-    ;;
+ 
+      kill `cat /var/vcap/sys/run/port_forwarding/port_forwarding.pid` ;;
+  *)  
 
 esac
 exit 0
