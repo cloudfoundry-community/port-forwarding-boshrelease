@@ -18,7 +18,21 @@ cd port-forwarding-boshrelease
 bosh upload release releases/port-forwarding-1.yml
 ```
 
-To use this release, simply add the "port_forwarding" template to your job as in this example:
+Next, add the release to your manifest:
+
+```
+releases:
+- name: bosh
+  version: 246
+- name: bosh-warden-cpi
+  version: 29
+- name: garden-linux
+  version: 0.330.0
+- name: port-forwarding
+  version: latest
+```
+
+Simply add the "port_forwarding" template to your job as in this example:
 
 ```
 jobs:
