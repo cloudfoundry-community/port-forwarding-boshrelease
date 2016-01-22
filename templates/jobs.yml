@@ -10,14 +10,14 @@ update:
 
 jobs:
   - name: port_forwarding_leader_z1
-    template: port-forwarding
+    template: port_forwarding
     instances: 0
     resource_pool: small_z1
     networks: (( merge ))
     persistent_disk: 0
     properties: {}
   - name: port_forwarding_z1
-    template: port-forwarding
+    template: port_forwarding
     instances: 0
     resource_pool: small_z1
     networks: (( merge ))
