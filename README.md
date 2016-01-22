@@ -4,7 +4,6 @@ This release was created for the express purpose of allowing me to easily (and r
 any ports I want from bosh-lite via my manifest.
 
 ## TODO
-- Get it working completely.
 - Add support for specifying different port mappings for multiple jobs in the manifest.
 
 ## Usage
