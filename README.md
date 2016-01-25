@@ -19,7 +19,8 @@ bosh upload release releases/port-forwarding-1.yml
 
 Next, add the release to your manifest:
 
-```
+<pre>
+<code>
 releases:
 - name: bosh
   version: 246
@@ -27,9 +28,10 @@ releases:
   version: 29
 - name: garden-linux
   version: 0.330.0
-- name: port-forwarding
-  version: latest
-```
+<b>- name: port-forwarding</b>
+<b>  version: latest</b>
+</code>
+</pre>
 
 Simply add the "port_forwarding" template to your job as in this example:
 
