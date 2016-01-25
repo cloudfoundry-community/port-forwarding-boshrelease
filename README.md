@@ -35,7 +35,8 @@ releases:
 
 Simply add the "port_forwarding" template to your job as in this example:
 
-```
+<pre>
+<code>
 jobs:
 - name: bosh
   instances: 1
@@ -53,8 +54,9 @@ jobs:
   - {name: health_monitor, release: bosh}
   - {name: warden_cpi, release: bosh-warden-cpi}
   - {name: garden, release: garden-linux}
-  - {name: port_forwarding, release: port-forwarding}
-```
+<b>  - {name: port_forwarding, release: port-forwarding}</b>
+</code>
+</pre>
 
 Then, define the ports you would like to forward:
 
