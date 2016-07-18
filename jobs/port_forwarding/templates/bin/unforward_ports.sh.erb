@@ -1,4 +1,3 @@
-<% p("port_forwarding.rules").each do |rule| %>
-sudo iptables -t nat -D PREROUTING -p tcp -d <%= spec.networks.send(spec.networks.methods(false).first).ip %> --dport <%= rule['external_port'] %> -j DNAT --to <%= rule['internal_ip'] %>:<%= rule['internal_port'] %>
-sudo iptables -t nat -D OUTPUT -p tcp -d <%= spec.networks.send(spec.networks.methods(false).first).ip %> --dport <%= rule['external_port'] %> -j DNAT --to <%= rule['internal_ip'] %>:<%= rule['internal_port'] %>
-<% end %>
+#!/bin/bash
+
+iptables -t nat -F portforwarding-release
