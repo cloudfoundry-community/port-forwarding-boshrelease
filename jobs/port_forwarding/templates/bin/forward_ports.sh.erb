@@ -13,12 +13,12 @@ if ! iptables -t nat -L ${CHAIN} >/dev/null 2>&1; then
 fi
 
 # if rule doesnt exists in prerouting, add it
-if forward_exists PREROUTING; then
+if ! forward_exists PREROUTING; then
 	iptables -t nat -A PREROUTING -j ${CHAIN}
 fi
 
 # if rule doesnt exist in output, add it
-if forward_exists OUTPUT; then
+if ! forward_exists OUTPUT; then
 	iptables -t nat -A OUTPUT -j ${CHAIN}
 fi
 
