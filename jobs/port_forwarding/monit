@@ -1,5 +1,5 @@
-check process port_forwarding
-  with pidfile /var/vcap/sys/run/port_forwarding/port_forwarding.pid
+check file port_forwarding
+  with path /var/vcap/sys/run/port_forwarding/port_forwarding.check
   start program "/var/vcap/jobs/port_forwarding/bin/monit_debugger port_forwarding_ctl '/var/vcap/jobs/port_forwarding/bin/port_forwarding_ctl start'"
   stop program "/var/vcap/jobs/port_forwarding/bin/monit_debugger port_forwarding_ctl '/var/vcap/jobs/port_forwarding/bin/port_forwarding_ctl stop'"
   group vcap

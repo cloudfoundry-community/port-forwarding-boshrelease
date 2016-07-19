@@ -10,15 +10,18 @@ case $1 in
       /var/vcap/jobs/port_forwarding/bin/forward_ports.sh
 
       mkdir -p /var/vcap/sys/run/port_forwarding
-      echo $$ > /var/vcap/sys/run/port_forwarding/port_forwarding.pid;
-      exec 2>&1 sleep 86400
+
+      # Create check file
+      touch /var/vcap/sys/run/port_forwarding/port_forwarding.check
       ;;
 
   stop)
       echo -n "Removing iptables rules for port forwarding"
       /var/vcap/jobs/port_forwarding/bin/unforward_ports.sh
- 
-      kill `cat /var/vcap/sys/run/port_forwarding/port_forwarding.pid` ;;
+
+      # Remove check file
+      rm /var/vcap/sys/run/port_forwarding/port_forwarding.check
+      ;;
   *)  
 
 esac
