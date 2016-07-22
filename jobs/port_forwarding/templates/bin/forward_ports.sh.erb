@@ -23,6 +23,8 @@ if ! forward_exists OUTPUT; then
 fi
 
 
-<% p("port_forwarding.rules").each do |rule| %>
+<% if_p("port_forwarding.rules") do |rules|
+	rules.each do |rule| %>
 sudo iptables -t nat -A portforwarding-release -p tcp -d <%= spec.networks.send(spec.networks.methods(false).first).ip %> --dport <%= rule['external_port'] %> -j DNAT --to <%= rule['internal_ip'] %>:<%= rule['internal_port'] %>
+<% end %>
 <% end %>
