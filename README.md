@@ -68,3 +68,36 @@ properties:
         internal_ip: 10.244.1.2
         internal_port: 9200
 ```
+
+Also, if you want to add your own iptables rules, simply add the "iptables" job like so:
+<pre>
+<code>
+jobs:
+- name: bosh
+  instances: 1
+  resource_pool: default
+  persistent_disk_pool: disks
+  networks:
+  - name: default
+    static_ips: (( static_ips(0) ))
+  templates:
+  - {name: nats, release: bosh}
+  - {name: redis, release: bosh}
+  - {name: blobstore, release: bosh}
+  - {name: postgres, release: bosh}
+  - {name: director, release: bosh}
+  - {name: health_monitor, release: bosh}
+  - {name: warden_cpi, release: bosh-warden-cpi}
+  - {name: garden, release: garden-linux}
+<b>  - {name: iptables, release: port-forwarding}</b>
+</code>
+</pre>
+
+Then add your rule(s):
+```
+properties:
+  iptables:
+    raw:
+      OUTPUT:
+      - -d 1.2.3.4 -j DROP
+```
