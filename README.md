@@ -1,4 +1,5 @@
-# Simple Port Forwarding for BOSH
+# Simple Port Forwarding for BOSH (DEPRECATED)
+The functionality from this release has been merged with the  [networking-boshrelease](https://github.com/cloudfoundry/networking-release).
 ## Summary
 This release was created for the express purpose of allowing me to easily (and repeatably) forward
 any ports I want from bosh-lite via my manifest.
